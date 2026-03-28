@@ -1,0 +1,5 @@
+{
+  "name": "Clone Stamp Watermark Remover",
+  "description": "A web application to remove watermarks from images using a clone stamp tool, featuring adjustable brush size, opacity, and hardness.",
+  "requestFramePermissions": []
+}
