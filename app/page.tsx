@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { Upload, Download, Undo, Image as ImageIcon, MousePointer2, Trash2 } from 'lucide-react';
+import { Upload, Download, Undo, Image as ImageIcon, MousePointer2, Trash2, Eraser } from 'lucide-react';
 
 export default function CloneStampApp() {
   const [image, setImage] = useState<HTMLImageElement | null>(null);
@@ -289,11 +289,13 @@ export default function CloneStampApp() {
     <div className="min-h-screen bg-zinc-950 text-zinc-300 flex font-sans selection:bg-blue-500/30">
       <aside className="w-80 bg-zinc-900 border-r border-zinc-800 flex flex-col h-screen shrink-0 z-10 shadow-2xl">
         <div className="p-6 border-b border-zinc-800">
-          <h1 className="text-xl font-semibold text-zinc-100 flex items-center gap-2">
-            <ImageIcon className="w-5 h-5 text-blue-400" />
-            Clone Stamp
+          <h1 className="text-xl font-semibold text-zinc-100 flex items-center gap-3">
+            <div className="bg-[#6338f0] p-1.5 rounded-lg flex items-center justify-center">
+              <Eraser className="w-5 h-5 text-white" strokeWidth={2.5} />
+            </div>
+            KARAQUITA LA MEJOR IPS
           </h1>
-          <p className="text-sm text-zinc-500 mt-2">Professional watermark removal</p>
+          <p className="text-sm text-zinc-500 mt-2">By ING ANDRES DURANGO</p>
         </div>
 
         <div className="p-6 flex-1 overflow-y-auto space-y-8 custom-scrollbar">
@@ -301,7 +303,7 @@ export default function CloneStampApp() {
             <label className="flex flex-col items-center justify-center w-full h-32 px-4 transition bg-zinc-950/50 border-2 border-zinc-800 border-dashed rounded-xl cursor-pointer hover:border-zinc-600 hover:bg-zinc-900 focus:outline-none group">
               <Upload className="w-8 h-8 text-zinc-500 group-hover:text-blue-400 transition-colors mb-2" />
               <span className="font-medium text-zinc-400 group-hover:text-zinc-300 transition-colors">
-                {image ? 'Change Image' : 'Upload Image'}
+                {image ? 'Cambiar Imagen' : 'Subir Imagen'}
               </span>
               <input type="file" className="hidden" accept="image/*" onChange={handleImageUpload} />
             </label>
@@ -311,7 +313,7 @@ export default function CloneStampApp() {
                 className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-lg transition-colors text-sm font-medium border border-red-500/20"
               >
                 <Trash2 className="w-4 h-4" />
-                Clear Image
+                Limpiar Imagen
               </button>
             )}
           </div>
@@ -319,7 +321,7 @@ export default function CloneStampApp() {
           <div className="space-y-6">
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <label className="text-sm font-medium text-zinc-300">Brush Size</label>
+                <label className="text-sm font-medium text-zinc-300">Tamaño del Pincel</label>
                 <span className="text-xs font-mono text-zinc-500 bg-zinc-950 px-2 py-1 rounded-md">{brushSize}px</span>
               </div>
               <input type="range" min="1" max="200" value={brushSize} onChange={(e) => setBrushSize(Number(e.target.value))} className="w-full h-1.5 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-500" />
@@ -327,7 +329,7 @@ export default function CloneStampApp() {
 
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <label className="text-sm font-medium text-zinc-300">Opacity</label>
+                <label className="text-sm font-medium text-zinc-300">Opacidad</label>
                 <span className="text-xs font-mono text-zinc-500 bg-zinc-950 px-2 py-1 rounded-md">{opacity}%</span>
               </div>
               <input type="range" min="1" max="100" value={opacity} onChange={(e) => setOpacity(Number(e.target.value))} className="w-full h-1.5 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-500" />
@@ -335,7 +337,7 @@ export default function CloneStampApp() {
 
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <label className="text-sm font-medium text-zinc-300">Hardness</label>
+                <label className="text-sm font-medium text-zinc-300">Dureza</label>
                 <span className="text-xs font-mono text-zinc-500 bg-zinc-950 px-2 py-1 rounded-md">{hardness}%</span>
               </div>
               <input type="range" min="0" max="100" value={hardness} onChange={(e) => setHardness(Number(e.target.value))} className="w-full h-1.5 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-500" />
@@ -345,20 +347,20 @@ export default function CloneStampApp() {
           <div className="bg-zinc-950/50 p-4 rounded-xl border border-zinc-800/50">
             <h3 className="text-sm font-semibold text-zinc-200 mb-3 flex items-center gap-2">
               <MousePointer2 className="w-4 h-4 text-blue-400" />
-              Instructions
+              Instrucciones
             </h3>
             <ul className="text-xs text-zinc-400 space-y-2.5">
               <li className="flex items-start gap-2">
                 <span className="text-blue-400 mt-0.5">•</span>
-                <span>Hold <kbd className="bg-zinc-800 border border-zinc-700 px-1.5 py-0.5 rounded text-zinc-300 font-sans shadow-sm">Alt</kbd> and click to set the source point.</span>
+                <span>Mantén presionado <kbd className="bg-zinc-800 border border-zinc-700 px-1.5 py-0.5 rounded text-zinc-300 font-sans shadow-sm">Alt</kbd> y haz clic para establecer el punto de origen.</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-blue-400 mt-0.5">•</span>
-                <span>Click and drag over the watermark to clone pixels from the source.</span>
+                <span>Haz clic y arrastra sobre la marca de agua para clonar píxeles del origen.</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-blue-400 mt-0.5">•</span>
-                <span>Adjust brush settings for seamless blending.</span>
+                <span>Ajusta la configuración del pincel para una mezcla perfecta.</span>
               </li>
             </ul>
           </div>
@@ -367,11 +369,11 @@ export default function CloneStampApp() {
         <div className="p-6 border-t border-zinc-800 grid grid-cols-2 gap-3 bg-zinc-900">
           <button onClick={handleUndo} disabled={historyRef.current.length <= 1} className="flex items-center justify-center gap-2 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 disabled:opacity-50 disabled:cursor-not-allowed text-zinc-100 rounded-lg transition-colors text-sm font-medium shadow-sm">
             <Undo className="w-4 h-4" />
-            Undo
+            Deshacer
           </button>
           <button onClick={handleDownload} disabled={!image} className="flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-lg transition-colors text-sm font-medium shadow-sm">
             <Download className="w-4 h-4" />
-            Save
+            Guardar
           </button>
         </div>
       </aside>
@@ -383,8 +385,8 @@ export default function CloneStampApp() {
               <div className="w-20 h-20 bg-zinc-950 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-zinc-800 shadow-inner">
                 <ImageIcon className="w-8 h-8 text-zinc-600" />
               </div>
-              <h2 className="text-xl font-medium text-zinc-200 mb-2">No image selected</h2>
-              <p className="text-zinc-500 text-sm">Upload an image from the sidebar to start removing watermarks with the clone stamp tool.</p>
+              <h2 className="text-xl font-medium text-zinc-200 mb-2">Ninguna imagen seleccionada</h2>
+              <p className="text-zinc-500 text-sm">Sube una imagen desde la barra lateral para empezar a eliminar marcas de agua con la herramienta de tampón de clonar.</p>
             </div>
           ) : (
             <div 
