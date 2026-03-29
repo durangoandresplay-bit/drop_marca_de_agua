@@ -286,19 +286,19 @@ export default function CloneStampApp() {
   const visualBrushSize = brushSize / canvasScale;
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-300 flex font-sans selection:bg-blue-500/30">
-      <aside className="w-80 bg-zinc-900 border-r border-zinc-800 flex flex-col h-screen shrink-0 z-10 shadow-2xl">
-        <div className="p-6 border-b border-zinc-800">
+    <div className="min-h-screen bg-zinc-950 text-zinc-300 flex flex-col md:flex-row font-sans selection:bg-blue-500/30">
+      <aside className="w-full md:w-80 bg-zinc-900 border-t md:border-t-0 md:border-r border-zinc-800 flex flex-col h-auto md:h-screen shrink-0 z-10 shadow-2xl order-2 md:order-1">
+        <div className="p-4 md:p-6 border-b border-zinc-800">
           <h1 className="text-xl font-semibold text-zinc-100 flex items-center gap-3">
             <div className="bg-[#6338f0] p-1.5 rounded-lg flex items-center justify-center">
               <Eraser className="w-5 h-5 text-white" strokeWidth={2.5} />
             </div>
-            KARAQUITA LA MEJOR IPS
+            CUANDO NOS PAGARAN
           </h1>
           <p className="text-sm text-zinc-500 mt-2">By ING ANDRES DURANGO</p>
         </div>
 
-        <div className="p-6 flex-1 overflow-y-auto space-y-8 custom-scrollbar">
+        <div className="p-4 md:p-6 flex-1 overflow-y-auto space-y-6 md:space-y-8 custom-scrollbar">
           <div className="space-y-3">
             <label className="flex flex-col items-center justify-center w-full h-32 px-4 transition bg-zinc-950/50 border-2 border-zinc-800 border-dashed rounded-xl cursor-pointer hover:border-zinc-600 hover:bg-zinc-900 focus:outline-none group">
               <Upload className="w-8 h-8 text-zinc-500 group-hover:text-blue-400 transition-colors mb-2" />
@@ -366,7 +366,7 @@ export default function CloneStampApp() {
           </div>
         </div>
 
-        <div className="p-6 border-t border-zinc-800 grid grid-cols-2 gap-3 bg-zinc-900">
+        <div className="p-4 md:p-6 border-t border-zinc-800 grid grid-cols-2 gap-3 bg-zinc-900">
           <button onClick={handleUndo} disabled={historyRef.current.length <= 1} className="flex items-center justify-center gap-2 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 disabled:opacity-50 disabled:cursor-not-allowed text-zinc-100 rounded-lg transition-colors text-sm font-medium shadow-sm">
             <Undo className="w-4 h-4" />
             Deshacer
@@ -378,8 +378,8 @@ export default function CloneStampApp() {
         </div>
       </aside>
 
-      <main className="flex-1 flex flex-col relative overflow-hidden bg-zinc-950 bg-[radial-gradient(#27272a_1px,transparent_1px)] [background-size:24px_24px]">
-        <div className="flex-1 flex items-center justify-center p-8 relative">
+      <main className="flex-1 flex flex-col relative overflow-hidden bg-zinc-950 bg-[radial-gradient(#27272a_1px,transparent_1px)] [background-size:24px_24px] order-1 md:order-2 min-h-[60vh] md:min-h-0">
+        <div className="flex-1 flex items-center justify-center p-4 md:p-8 relative">
           {!image ? (
             <div className="text-center max-w-md mx-auto bg-zinc-900/80 backdrop-blur-sm p-8 rounded-2xl border border-zinc-800 shadow-xl">
               <div className="w-20 h-20 bg-zinc-950 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-zinc-800 shadow-inner">
